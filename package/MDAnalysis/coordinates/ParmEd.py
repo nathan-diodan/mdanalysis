@@ -81,13 +81,21 @@ from ..core import flags
 from ..core.universe import Universe
 
 
-
 class ParmEdReader(base.SingleFrameReaderBase):
     """Coordinate reader for ParmEd."""
     format = 'PARMED'
 
     # Structure.coordinates always in Angstrom
     units = {'time': None, 'length': 'Angstrom'}
+
+    @staticmethod
+    def format_test(thing):
+        try:
+            import parmed as pmd
+        except ImportError:
+            return False
+        else:
+            return isinstance(thing, pmd.Structure)
 
     def _read_first_frame(self):
         self.n_atoms = len(self.filename.atoms)
