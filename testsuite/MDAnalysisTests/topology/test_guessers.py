@@ -65,10 +65,10 @@ class TestGuessTypes(object):
         out = guessers.guess_types(['MG2+', 'C12'])
 
         assert isinstance(out, np.ndarray)
-        assert_equal(out, np.array(['MG', 'C'], dtype=object))
+        assert_equal(out, np.array(['Mg', 'C'], dtype=object))
 
     def test_guess_atom_element(self):
-        assert guessers.guess_atom_element('MG2+') == 'MG'
+        assert guessers.guess_atom_element('MG2+') == 'Mg'
 
     def test_guess_atom_element_empty(self):
         assert guessers.guess_atom_element('') == ''
@@ -90,8 +90,8 @@ class TestGuessTypes(object):
         ('OH-', 'O'),
         ('HO', 'H'),
         ('he', 'H'), 
-        ('zn', 'ZN'),
-        ('Ca2+', 'CA'),
+        ('zn', 'Zn'),
+        ('Ca2+', 'Ca'),
         ('CA', 'C'),
     ))
     def test_guess_element_from_name(self, name, element):
